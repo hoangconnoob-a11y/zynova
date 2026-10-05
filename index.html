@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zynova — Kho tải xuống</title>
+  <meta name="description" content="Zynova - Kho tải xuống">
+  <style>
+    :root {
+      --bg: #080b14;
+      --panel: rgba(20, 25, 40, .72);
+      --panel2: rgba(255,255,255,.055);
+      --text: #f5f7ff;
+      --muted: #9ca6bd;
+      --line: rgba(255,255,255,.10);
+      --accent: #7c5cff;
+      --accent2: #22d3ee;
+      --good: #34d399;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(124,92,255,.24), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(34,211,238,.15), transparent 28%),
+        var(--bg);
+      min-height: 100vh;
+    }
+    .wrap { width: min(1080px, 92%); margin: auto; }
+    header {
+      padding: 28px 0; display:flex; justify-content:space-between; align-items:center;
+    }
+    .brand { display:flex; gap:12px; align-items:center; font-weight:800; font-size:22px; }
+    .logo {
+      width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
+      background: linear-gradient(135deg,var(--accent),var(--accent2)); box-shadow:0 10px 35px rgba(124,92,255,.3);
+    }
+    nav a { color:var(--muted); text-decoration:none; margin-left:22px; font-size:14px; }
+    nav a:hover { color:white; }
+    .hero { padding:72px 0 50px; text-align:center; }
+    .badge {
+      display:inline-flex; padding:7px 12px; border:1px solid var(--line); border-radius:999px;
+      background:var(--panel2); color:#cdd4e6; font-size:13px;
+    }
+    h1 { font-size:clamp(42px,8vw,76px); line-height:1; margin:22px 0 16px; letter-spacing:-3px; }
+    .gradient { background:linear-gradient(90deg,#fff,var(--accent2),#a78bfa); -webkit-background-clip:text; color:transparent; }
+    .hero p { max-width:650px; margin:0 auto; color:var(--muted); font-size:17px; line-height:1.7; }
+    .search {
+      margin:34px auto 0; max-width:620px; display:flex; gap:10px; padding:8px;
+      border:1px solid var(--line); background:rgba(10,14,25,.72); border-radius:18px; backdrop-filter:blur(14px);
+    }
+    .search input { flex:1; background:transparent; border:0; outline:0; color:white; padding:12px 14px; font-size:15px; }
+    .btn {
+      border:0; border-radius:13px; padding:12px 18px; color:white; font-weight:700; cursor:pointer;
+      background:linear-gradient(135deg,var(--accent),#5b8cff);
+    }
+    .files { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:16px; padding:15px 0 70px; }
+    .card {
+      background:var(--panel); border:1px solid var(--line); border-radius:22px; padding:20px;
+      backdrop-filter:blur(18px); transition:.2s transform,.2s border-color;
+    }
+    .card:hover { transform:translateY(-4px); border-color:rgba(124,92,255,.55); }
+    .icon { width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:rgba(124,92,255,.14);font-size:22px; }
+    .top { display:flex; justify-content:space-between; align-items:center; }
+    .type { color:var(--muted); font-size:12px; }
+    .card h3 { margin:18px 0 7px; font-size:18px; }
+    .meta { color:var(--muted); font-size:13px; margin-bottom:18px; }
+    .download {
+      display:block; text-align:center; text-decoration:none; padding:11px 14px; border-radius:12px;
+      color:white; background:rgba(255,255,255,.07); border:1px solid var(--line); font-weight:700;
+    }
+    .download:hover { background:linear-gradient(135deg,var(--accent),#5b8cff); }
+    footer { border-top:1px solid var(--line); padding:25px 0 40px; color:var(--muted); text-align:center; font-size:13px; }
+    .empty { display:none; text-align:center; color:var(--muted); padding:40px; grid-column:1/-1; }
+    @media(max-width:600px){ nav{display:none}.hero{padding-top:45px}h1{letter-spacing:-2px}.search{display:block;background:transparent;border:0;padding:0}.search input,.search .btn{width:100%;margin-top:8px;border:1px solid var(--line);border-radius:13px;background:var(--panel);}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand"><div class="logo">Z</div><span>Zynova</span></div>
+      <nav><a href="#files">Files</a><a href="#about">Giới thiệu</a></nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <span class="badge">✦ Zynova Download Center</span>
+        <h1>Tải xuống <span class="gradient">đơn giản.</span></h1>
+        <p>Kho tải xuống của Zynova — nhanh, gọn và dễ sử dụng. Chọn file bạn cần và bắt đầu tải.</p>
+        <div class="search">
+          <input id="search" type="search" placeholder="Tìm tên file..." oninput="filterFiles()">
+          <button class="btn" onclick="document.getElementById('files').scrollIntoView({behavior:'smooth'})">Xem file</button>
+        </div>
+      </section>
+
+      <section id="files" class="files">
+        <!-- ĐỔI LINK GOOGLE DRIVE Ở href="" -->
+        <article class="card" data-name="Zynova File 01">
+          <div class="top"><div class="icon">📦</div><span class="type">ZIP</span></div>
+          <h3>Zynova File 01</h3>
+          <div class="meta">Gói tải xuống • 25 MB</div>
+          <a class="download" href="YOUR_GOOGLE_DRIVE_LINK_1" target="_blank" rel="noopener">⬇ Tải xuống</a>
+        </article>
+
+        <article class="card" data-name="Zynova File 02">
+          <div class="top"><div class="icon">📄</div><span class="type">PDF</span></div>
+          <h3>Zynova File 02</h3>
+          <div class="meta">Tài liệu • 8 MB</div>
+          <a class="download" href="YOUR_GOOGLE_DRIVE_LINK_2" target="_blank" rel="noopener">⬇ Tải xuống</a>
+        </article>
+
+        <article class="card" data-name="Zynova File 03">
+          <div class="top"><div class="icon">💾</div><span class="type">FILE</span></div>
+          <h3>Zynova File 03</h3>
+          <div class="meta">Tệp khác • 12 MB</div>
+          <a class="download" href="YOUR_GOOGLE_DRIVE_LINK_3" target="_blank" rel="noopener">⬇ Tải xuống</a>
+        </article>
+
+        <div id="empty" class="empty">Không tìm thấy file phù hợp.</div>
+      </section>
+    </main>
+
+    <footer id="about">© 2026 Zynova • Download Center</footer>
+  </div>
+
+  <script>
+    function filterFiles() {
+      const q = document.getElementById('search').value.toLowerCase().trim();
+      const cards = [...document.querySelectorAll('.card')];
+      let shown = 0;
+      cards.forEach(card => {
+        const ok = card.dataset.name.toLowerCase().includes(q);
+        card.style.display = ok ? '' : 'none';
+        if (ok) shown++;
+      });
+      document.getElementById('empty').style.display = shown ? 'none' : 'block';
+    }
+  </script>
+</body>
+</html>
